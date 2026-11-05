@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="560" height="390" viewBox="0 0 560 390" fill="none">
+<defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="#b8c69b" opacity=".55"/></pattern></defs>
+<rect x="7" y="4" width="546" height="355" rx="2" fill="url(#dots)"/>
+<path d="M45 285L273 162L519 283L281 379Z" fill="#dae4c3" stroke="#b3c292"/>
+<path d="M45 285L281 379L519 283M94 260L330 355M143 233L379 332M191 206L428 310M239 180L477 286M94 305L329 188M143 325L379 212M191 344L428 235M239 363L477 260" stroke="#bccb9f"/>
+<ellipse cx="197" cy="292" rx="59" ry="24" fill="#aebd92" opacity=".45"/>
+<path d="M148 274L192 250L236 271V294L192 317L148 295Z" fill="#e9efd9" stroke="#536342" stroke-width="2"/>
+<path d="M148 274L192 296L236 271M192 296V317" stroke="#536342" stroke-width="2"/>
+<path d="M191 275L191 216L258 156L285 95L355 128" stroke="#273d2c" stroke-width="33" stroke-linejoin="round"/>
+<path d="M181 274L181 212L249 150L277 89L354 124" stroke="#7c9267" stroke-width="17" stroke-linejoin="round"/>
+<g fill="#e9efd9" stroke="#314732" stroke-width="3"><ellipse cx="191" cy="216" rx="18" ry="20"/><ellipse cx="258" cy="156" rx="17" ry="19"/><ellipse cx="285" cy="95" rx="18" ry="20"/></g>
+<g fill="#7b9165"><ellipse cx="191" cy="216" rx="6" ry="8"/><ellipse cx="258" cy="156" rx="5" ry="7"/><ellipse cx="285" cy="95" rx="6" ry="8"/></g>
+<path d="M353 128L365 153L354 177M365 153L388 159" stroke="#2d442f" stroke-width="8" stroke-linecap="round"/>
+<path d="M338 254L371 236L405 253L371 273Z" fill="#c3d777" stroke="#627a3d" stroke-width="2"/><path d="M338 254V282L371 300L405 281V253M371 273V300" fill="#d0df9c" stroke="#627a3d" stroke-width="2"/>
+<path d="M366 181C361 200 362 215 371 230" stroke="#7d993b" stroke-width="2" stroke-dasharray="4 5"/>
+<path d="M365 226L371 232L375 223" stroke="#7d993b" stroke-width="2"/>
+<path d="M116 115V55H212M389 80H471V187M415 298H493V256" stroke="#85996a" stroke-dasharray="3 4"/>
+<g font-family="monospace" font-size="10" letter-spacing="1" fill="#465638"><text x="43" y="42">01 / OBSERVE</text><text x="360" y="62">02 / INFER</text><text x="431" y="321">03 / ACT</text></g>
+<rect x="42" y="64" width="96" height="47" rx="5" fill="#edf2e1" stroke="#87996b"/><path d="M58 76H94V97H58Z" stroke="#607649"/><circle cx="76" cy="86" r="5" stroke="#607649"/><path d="M99 81L112 75V98L99 91" stroke="#607649"/>
+<rect x="416" y="101" width="105" height="72" rx="5" fill="#243a2b"/><g stroke="#c0d687"><rect x="449" y="119" width="38" height="34" rx="2"/><path d="M457 126H479V146H457ZM443 125H449M443 135H449M443 146H449M487 125H493M487 135H493M487 146H493M456 113V119M469 113V119M480 113V119M456 153V159M469 153V159M480 153V159"/></g>
+<g font-family="monospace" font-size="9" fill="#556944"><text x="58" y="132">observation</text><text x="430" y="191">policy engine</text></g>
+<rect x="40" y="334" width="98" height="23" rx="11" fill="#edf2df" stroke="#bac99d"/><circle cx="53" cy="345" r="3" fill="#68873f"/><text x="63" y="349" font-family="monospace" font-size="9" fill="#536a3c">SYSTEM VIEW</text>
+</svg>
