@@ -11,10 +11,10 @@ export const configurations = [
 ].map(row => ({ ...row, ...pendingMetrics, benchmark: null, model: null, hardware: null, status: 'Pending' }));
 
 export const tasks = [
-  { id: 'pick-place', name: 'Pick & place', icon: '◇', description: 'Observe an object, grasp it, and place it in a target region. A starting point for studying the inference-to-action loop.', criteria: 'Target pose / region · TBD' },
-  { id: 'articulation', name: 'Articulation', icon: '⊞', description: 'Interact with a door, drawer, or another articulated object. Evaluate control precision as observations and actions evolve.', criteria: 'Joint / task threshold · TBD' },
-  { id: 'precision', name: 'Precision manipulation', icon: '⊕', description: 'Align and manipulate objects under tighter spatial constraints. Study action consistency alongside inference efficiency.', criteria: 'Alignment tolerance · TBD' },
-  { id: 'long-horizon', name: 'Long-horizon', icon: '⌁', description: 'Complete a sequence of object interactions. Examine accumulated errors, state resets, and policy continuity across a rollout.', criteria: 'Subtask completion · TBD' },
+  { id: 'pick-place', name: 'Pick & place', icon: '◇', description: 'Observe an object, grasp it, and place it in a target region. A starting point for studying the inference-to-action loop.', criteria: 'Target pose / region · TBD', recording: null },
+  { id: 'articulation', name: 'Articulation', icon: '⊞', description: 'Interact with a door, drawer, or another articulated object. Evaluate control precision as observations and actions evolve.', criteria: 'Joint / task threshold · TBD', recording: null },
+  { id: 'precision', name: 'Precision manipulation', icon: '⊕', description: 'Align and manipulate objects under tighter spatial constraints. Study action consistency alongside inference efficiency.', criteria: 'Alignment tolerance · TBD', recording: null },
+  { id: 'long-horizon', name: 'Long-horizon', icon: '⌁', description: 'Complete a sequence of object interactions. Examine accumulated errors, state resets, and policy continuity across a rollout.', criteria: 'Subtask completion · TBD', recording: null },
 ];
 
 export const analysisMetrics = {

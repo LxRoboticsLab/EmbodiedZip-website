@@ -1,9 +1,12 @@
+import { initSectionNavigation } from './section-navigation.mjs';
+import { createRecordingViewer } from './recording-viewer.mjs';
 import { createLandscape } from './landscape.mjs';
 import { configurations, tasks, analysisMetrics, filterConfigurations, sortConfigurations, formatMetric, toCsv } from './data.mjs';
 
 const $ = selector => document.querySelector(selector);
 const state = { search: '', mode: 'all', view: 'all', benchmark: 'all', sortKey: null, direction: 'asc', selected: new Set() };
 const landscape = createLandscape(document.querySelector('.landscape'));
+const recordingViewer = createRecordingViewer(document.querySelector('.rerun-explorer'));
 const escape = value => String(value).replace(/[&<>"']/g, character => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[character]));
 const announce = message => { $('#announcement').textContent = message; };
 
@@ -87,14 +90,14 @@ $('#export-csv').addEventListener('click', () => {
   announce('Exported visible planned configurations. Unmeasured results are empty cells.');
 });
 
-$('#task-buttons').innerHTML = tasks.map((task, index) => `<button type="button" data-task="${task.id}" aria-pressed="${index === 0}" aria-controls="task-name task-description task-criteria scene-task-name"><span aria-hidden="true">${task.icon}</span>${task.name}</button>`).join('');
+$('#task-buttons').innerHTML = tasks.map((task, index) => `<button type="button" data-task="${task.id}" aria-pressed="${index === 0}" aria-controls="task-name task-description task-criteria"><span aria-hidden="true">${task.icon}</span>${task.name}</button>`).join('');
 $('#task-matrix').innerHTML = tasks.map(task => `<tr><td>${task.name}</td>${Array.from({ length: 4 }, () => '<td aria-label="Unmeasured">—</td>').join('')}</tr>`).join('');
 function selectTask(id) {
   const task = tasks.find(item => item.id === id);
   $('#task-name').textContent = task.name;
   $('#task-description').textContent = task.description;
   $('#task-criteria').textContent = task.criteria;
-  $('#scene-task-name').textContent = task.name;
+  recordingViewer.selectTask(task);
   document.querySelectorAll('[data-task]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.task === id)));
 }
 $('#task-buttons').addEventListener('click', event => { const button = event.target.closest('[data-task]'); if (button) { selectTask(button.dataset.task); announce(`Selected ${tasks.find(task => task.id === button.dataset.task).name}. Recordings and results pending.`); } });
@@ -111,16 +114,6 @@ setupTabs('[data-metric]', button => {
   $('.quadrant-note').textContent = metric.region;
 });
 
-if ('IntersectionObserver' in window) {
-  const observer = new IntersectionObserver(entries => {
-    const entry = entries.filter(item => item.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-    if (!entry) return;
-    document.querySelectorAll('.contents nav a').forEach(link => {
-      const active = link.getAttribute('href') === `#${entry.target.id}`;
-      link.classList.toggle('active', active);
-      if (active) link.setAttribute('aria-current', 'location'); else link.removeAttribute('aria-current');
-    });
-  }, { rootMargin: '-10% 0px -40% 0px', threshold: [0, .1, .5] });
-  document.querySelectorAll('.content>.section[id]').forEach(section => observer.observe(section));
-}
+initSectionNavigation();
+
 renderTable();
