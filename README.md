@@ -4,7 +4,7 @@ EmbodiedZip 项目网站。网站源码公开于 **[LxRoboticsLab/EmbodiedZip-we
 
 **https://lxroboticslab.github.io/EmbodiedZip-website/**
 
-研究框架仓库保持私有，网站开发在其独立 `website` 分支进行。公开仓库只包含本目录的内容（网站、图示、测试和 Pages 工作流），不包含模型、推理代码、研究仓库历史、数据、权重或凭证。公开站点的链接指向本站内容和公开网站仓库。
+研究框架仓库保持私有，网站在本公开仓库中独立开发和部署。本地目录为 `/mnt/sda1/EmbodiedZip-website`；原研究框架仓库仅保留 `main` 分支。本站仓库只包含网站、图示、测试和 Pages 工作流，不包含模型、推理代码、研究仓库历史、数据、权重或凭证。公开站点的链接指向本站内容和公开网站仓库。
 
 ## 本地查看
 
@@ -16,7 +16,7 @@ python -m http.server 8080
 
 访问 `http://localhost:8080`。
 
-在研究框架仓库的 `website` 分支中，使用 `python -m http.server 8080 --directory website`。所有资源采用相对路径，兼容 GitHub Pages 项目子路径。
+所有资源采用相对路径，兼容 GitHub Pages 项目子路径。
 
 网站采用 HTML、CSS 和原生 ES modules，无需框架、打包或 npm 依赖。Google Fonts 可离线回退到系统字体；没有第三方 JS、分析跟踪或模型运行依赖。
 
@@ -50,12 +50,21 @@ Node.js 20+，无需安装依赖：
 npm run check
 ```
 
-在研究框架仓库中先执行 `cd website`。另已用 Chromium 验证搜索、筛选、对比、任务切换、指标 tabs、键盘操作、CSV 下载及 320–1440 px 响应式布局。
+已用 Chromium 验证搜索、筛选、对比、任务切换、指标 tabs、键盘操作、CSV 下载及 320–1440 px 响应式布局。
 
 ## 发布与维护
 
 公开网站仓库 `main` 分支更新后，工作流自动执行检查并发布 Pages。首次发布设置：**Settings → Pages → Source → GitHub Actions**。部署成功后，站点地址如上。
 
-建议在研究框架的 `website` 分支维护原始内容，并且**仅将 `website/` 目录内容同步至公开网站仓库根目录**。原私有仓库根目录的 `.github/workflows/website-checks.yml` 只运行检查；Pages 部署使用公开仓库中的 `.github/workflows/pages.yml`。
+直接在本仓库维护网站，Pages 部署使用 `.github/workflows/pages.yml`：
 
-不要将两个仓库的 Git 历史合并，不要公开整个研究框架仓库，也不要复制私有仓库的 `.git/`、凭证、模型、数据或权重。使用两个独立 checkout 即可：将本目录文件同步到公开 checkout 后检查、提交并推送其 `main` 分支。
+```bash
+cd /mnt/sda1/EmbodiedZip-website
+# 修改网站内容
+npm run check
+git add <修改的文件>
+git commit -m "Update project website"
+git push origin main
+```
+
+研究框架与网站使用独立仓库及 Git 历史。提交到网站仓库的内容会公开，请仅提交网站所需的源码与资源。
