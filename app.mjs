@@ -1,7 +1,9 @@
+import { createLandscape } from './landscape.mjs';
 import { configurations, tasks, analysisMetrics, filterConfigurations, sortConfigurations, formatMetric, toCsv } from './data.mjs';
 
 const $ = selector => document.querySelector(selector);
 const state = { search: '', mode: 'all', view: 'all', benchmark: 'all', sortKey: null, direction: 'asc', selected: new Set() };
+const landscape = createLandscape(document.querySelector('.landscape'));
 const escape = value => String(value).replace(/[&<>"']/g, character => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[character]));
 const announce = message => { $('#announcement').textContent = message; };
 
@@ -21,6 +23,7 @@ function renderTable() {
   $('#table-empty').hidden = rows.length > 0;
   $('#result-count').textContent = `${rows.length} planned configuration${rows.length === 1 ? '' : 's'} · 0 published runs`;
   renderComparison();
+  landscape.update(rows, state.selected);
 }
 
 function renderComparison() {

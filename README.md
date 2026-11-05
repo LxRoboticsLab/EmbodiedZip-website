@@ -22,10 +22,11 @@ python -m http.server 8080
 
 ## 文件说明
 
-- `index.html`：介绍、排行榜、任务展示、效率分析、Policy Serving、评估方法。
+- `index.html`：介绍、排行榜、任务展示、效率分析、评估方法。
 - `styles.css`：响应式布局与样式。
 - `data.mjs`：规划配置、任务类别、指标定义与筛选/排序/CSV 逻辑。
 - `app.mjs`：交互、键盘可访问 tabs、配置对比、任务切换与导出。
+- `landscape.mjs`：latency × memory × success rate 三维结果总览，支持拖动旋转、键盘滑块及二维投影视图；自动使用表格筛选与配置选择。
 - `assets/`：原创 SVG 示意图，不是实机记录。
 - `tests/`：数据真实性与筛选、排序、CSV 边界测试。
 - `.github/workflows/pages.yml`：公开网站仓库的 Pages 工作流。
@@ -36,7 +37,7 @@ python -m http.server 8080
 
 已建立共享数据契约、推理协议、配置查看工具、同步接口模拟示例和 policy serving 接口骨架。首个模型与 benchmark、加速算法、执行后端、远程服务和真实评估仍待接入。
 
-网站所有实验指标为 `null`，显示为 `—`，CSV 导出为空字段。规划配置不是已运行的实验；benchmark 候选不是已接入能力；任务类别是示意；视频与图表为标记清楚的 placeholder。更新结果时需附模型、benchmark、硬件和可复现运行来源。真实图表渲染与分布数据绑定将在首批结果接入时实现。
+网站所有实验指标为 `null`，显示为 `—`，CSV 导出为空字段。规划配置不是已运行的实验；benchmark 候选不是已接入能力；任务类别是示意；视频与图表为标记清楚的 placeholder。更新结果时需附模型、benchmark、硬件和可复现运行来源。三维总览仅绘制三项指标均完整且有效的测量结果，缺失数据不会被当作 0。Latency、memory 从 0 开始，范围根据完整结果自动设置，success rate 固定为 0–100%。无数据时不显示虚构刻度或数据点；二维分析卡片的分布渲染将在首批结果接入时实现。
 
 近期方向：首个模型和同步闭环基线 → Policy Server / Client → 完整运行清单与指标 → 单项优化消融 → 异步 / RTC 与多 benchmark。
 
